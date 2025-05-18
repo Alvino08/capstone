@@ -1,0 +1,59 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthController;
+use App\Http\Middleware\IsAdmin;
+
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
+
+// Route::get('/dashboard', function(){
+//     return view('dashboard');
+// });
+
+Route::get('/rangkuman', function(){
+    return view('rangkuman');
+});
+
+// Route::get('/berita', function(){
+//     return view('berita');
+// });
+
+Route::get('/riwayat', function(){
+    return view('riwayat');
+});
+
+// Route::get('/artikel', function(){
+//     return view('artikel');
+// });
+
+// Route::get('/post', function(){
+//     return view('post');
+// });
+
+// Route::get('/post', [NewsController::class, 'create'])->name('news.create')->middleware('isAdmin');
+Route::middleware([IsAdmin::class])->group(function () {
+    Route::get('/post', function () {
+        return view('post');
+    });
+});
+Route::post('/news', [NewsController::class, 'store'])->name('news.store');
+// Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+
+// Route::get('/berita', [NewsController::class, 'index']);
+Route::get('/berita', [NewsController::class, 'index'])->name('berita');
+Route::get('/artikel/{slug}', [NewsController::class, 'show']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'login'])->middleware('guest');
+
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->middleware('guest')->name('register');
+Route::post('/register', [AuthController::class, 'register'])->middleware('guest');
+
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
