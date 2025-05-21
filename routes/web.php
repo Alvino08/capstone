@@ -5,6 +5,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\IsAdmin;
+use App\Http\Controllers\SummaryController;
 
 // Route::get('/', function () {
 //     return view('dashboard');
@@ -57,3 +58,4 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->middleware
 Route::post('/register', [AuthController::class, 'register'])->middleware('guest');
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+Route::post('/summarize', [SummaryController::class, 'summarize'])->name('summarize');

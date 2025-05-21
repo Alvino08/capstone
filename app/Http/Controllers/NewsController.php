@@ -65,9 +65,4 @@ class NewsController extends Controller
         return view('artikel', compact('news'));
     }
 
-    public function beritaTerkini()
-    {
-        $latestNews = News::latest()->take(3)->get();
-        return view('dashboard', compact('latestNews')); // Ganti 'beranda' sesuai dengan nama view kamu
-    }
 }

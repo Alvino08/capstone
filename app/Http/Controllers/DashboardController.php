@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index()
-{
-    $latestNews = News::latest()->take(3)->get();
+    {
+        $latestNews = News::latest()->take(3)->get();
 
-    return view('dashboard', compact('latestNews'));
-}
+        return view('dashboard', compact('latestNews'));
+    }
 }
