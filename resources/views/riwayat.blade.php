@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,49 +7,73 @@
     @vite('resources/css/app.css')
     <title>SumAI Riwayat</title>
 </head>
-<body>
-    
-<div class="bg-white h-[89px] flex justify-between items-center outline-[#00000061] outline-[1px] shadow-[0px_4px_4px_0px] shadow-[#00000040]">
-    <a class="w-[292px] h-[89px] flex justify-center-safe items-center font-inter font-[700] text-[30px]" href="/"><</a>
-    <p class="w-[236px] h-[44px] flex justify-around items-center font-inter font-[700] text-[36px]">Riwayat</p>
-    <div class="w-[339px] h-[59px] flex justify-start items-center">
-        <div class="bg-white w-[122px] h-[39px] outline-[1px] outline-[#2563EB] rounded-[10px] flex items-center justify-center-safe text-[#2563EB] font-inter font-[700] text-[16px] m-[10px]">Masuk</div>
-        <div class="bg-[#2563EB] w-[122px] h-[39px] rounded-[10px] flex items-center justify-center-safe text-white font-inter font-[700] text-[16px] m-[10px] hover:bg-blue-900 transition-all">Daftar</div>
-    </div>
-</div>
+<body class="flex flex-col min-h-screen">
 
-<div class="h-screen flex justify-center py-10">
-    <div class="carousel carousel-vertical rounded-box p-10">
+<x-navbar></x-navbar>
 
-        <div class="carousel-item h-[178px] w-[946px] my-5 rounded-4xl outline-[1px] p-8 flex flex-col">
-            <p class="font-inter font-[700] text-2xl h-[50px]">IHSG Keok hingga 9%, Intip Deretan Saham Top Gainers</p>
-            <p class="font-inter font-[500] text-[20px] leading-6 h-[100px]">{{ Str::limit("KONTAN.CO.ID - JAKARTA. Sejumlah emiten dijadwalkan membagikan dividen tunai kepada para pemegang sahamnya, usai memperoleh restu dalam Rapat Umum Pemegang Saham Tahunan (RUPST). Aksi korporasi ini berpotensi memberikan sentimen positif bagi pasar saham, yang sebelumnya sempat tertekan oleh volatilitas akibat kebijakan tarif impor dari Amerika Serikat (AS)", 178) }}</p>
-            <p class="font-inter font-[400] text-[14px] h-[28px] text-right">1 hari yang lalu</p>
+    <main class="flex-grow min-h-screen pt-[89px]">
+        <div class="h-auto flex justify-center py-10">
+            <div class="w-[946px] space-y-5">
+                @forelse ($riwayats as $riwayat)
+                    <a href="{{ route('riwayat.show', $riwayat->id) }}" class="block">
+                        <div class="rounded-2xl border p-6 shadow-sm hover:bg-gray-50 transition-all">
+                            <p class="font-bold text-xl mb-2">{{ Str::limit($riwayat->original_text, 80) }}</p>
+                            <p class="text-gray-700 text-base mb-2">{{ Str::limit($riwayat->summary_result, 200) }}</p>
+                            <p class="text-sm text-right text-gray-500">{{ $riwayat->created_at->diffForHumans() }}</p>
+                        </div>
+                    </a>
+                @empty
+                    <div class="text-center text-gray-500 text-lg">Belum ada riwayat rangkuman.</div>
+                @endforelse
+            </div>
         </div>
-
-        <div class="carousel-item h-[178px] w-[946px] my-5 rounded-4xl outline-[1px] p-8 flex flex-col">
-            <p class="font-inter font-[700] text-2xl h-[50px]">IHSG Keok hingga 9%, Intip Deretan Saham Top Gainers</p>
-            <p class="font-inter font-[500] text-[20px] leading-6 h-[100px]">{{ Str::limit("KONTAN.CO.ID - JAKARTA. Sejumlah emiten dijadwalkan membagikan dividen tunai kepada para pemegang sahamnya, usai memperoleh restu dalam Rapat Umum Pemegang Saham Tahunan (RUPST). Aksi korporasi ini berpotensi memberikan sentimen positif bagi pasar saham, yang sebelumnya sempat tertekan oleh volatilitas akibat kebijakan tarif impor dari Amerika Serikat (AS)", 178) }}</p>
-            <p class="font-inter font-[400] text-[14px] h-[28px] text-right">1 hari yang lalu</p>
-        </div>
-
-        <div class="carousel-item h-[178px] w-[946px] my-5 rounded-4xl outline-[1px] p-8 flex flex-col">
-            <p class="font-inter font-[700] text-2xl h-[50px]">IHSG Keok hingga 9%, Intip Deretan Saham Top Gainers</p>
-            <p class="font-inter font-[500] text-[20px] leading-6 h-[100px]">{{ Str::limit("KONTAN.CO.ID - JAKARTA. Sejumlah emiten dijadwalkan membagikan dividen tunai kepada para pemegang sahamnya, usai memperoleh restu dalam Rapat Umum Pemegang Saham Tahunan (RUPST). Aksi korporasi ini berpotensi memberikan sentimen positif bagi pasar saham, yang sebelumnya sempat tertekan oleh volatilitas akibat kebijakan tarif impor dari Amerika Serikat (AS)", 178) }}</p>
-            <p class="font-inter font-[400] text-[14px] h-[28px] text-right">1 hari yang lalu</p>
-        </div>
-
-        <div class="carousel-item h-[178px] w-[946px] my-5 rounded-4xl outline-[1px] p-8 flex flex-col">
-            <p class="font-inter font-[700] text-2xl h-[50px]">IHSG Keok hingga 9%, Intip Deretan Saham Top Gainers</p>
-            <p class="font-inter font-[500] text-[20px] leading-6 h-[100px]">{{ Str::limit("KONTAN.CO.ID - JAKARTA. Sejumlah emiten dijadwalkan membagikan dividen tunai kepada para pemegang sahamnya, usai memperoleh restu dalam Rapat Umum Pemegang Saham Tahunan (RUPST). Aksi korporasi ini berpotensi memberikan sentimen positif bagi pasar saham, yang sebelumnya sempat tertekan oleh volatilitas akibat kebijakan tarif impor dari Amerika Serikat (AS)", 178) }}</p>
-            <p class="font-inter font-[400] text-[14px] h-[28px] text-right">1 hari yang lalu</p>
-        </div>
-
-    </div>
-    
-</div>
+    </main>
 
 <x-footer></x-footer>
+
+</body>
+</html> --}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @vite('resources/css/app.css')
+    <title>SumAI Riwayat</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <x-navbar></x-navbar>
+
+    <main class="flex-grow pt-[89px] min-h-screen">
+        <div class="flex justify-center py-10 px-4">
+            <div class="w-full max-w-5xl space-y-5">
+                @forelse ($riwayats as $riwayat)
+                    <a href="{{ route('riwayat.show', $riwayat->id) }}" class="block">
+                        <div class="rounded-2xl border p-6 shadow-sm hover:bg-gray-50 transition-all">
+                            <p class="font-bold text-lg md:text-xl mb-2">
+                                {{ Str::limit($riwayat->original_text, 80) }}
+                            </p>
+                            <p class="text-gray-700 text-base mb-2">
+                                {{ Str::limit($riwayat->summary_result, 200) }}
+                            </p>
+                            <p class="text-sm text-right text-gray-500">
+                                {{ $riwayat->created_at->diffForHumans() }}
+                            </p>
+                        </div>
+                    </a>
+                @empty
+                    <div class="text-center text-gray-500 text-lg">Belum ada riwayat rangkuman.</div>
+                @endforelse
+            </div>
+        </div>
+    </main>
+
+    <x-footer></x-footer>
 
 </body>
 </html>

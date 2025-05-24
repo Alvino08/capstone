@@ -23,6 +23,11 @@ class User extends Authenticatable
         'password',
     ];
 
+        public function riwayats()
+        {
+            return $this->hasMany(Riwayat::class);
+        }
+
     /**
      * The attributes that should be hidden for serialization.
      *
