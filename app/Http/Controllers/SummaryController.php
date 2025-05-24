@@ -98,7 +98,7 @@ class SummaryController extends Controller
             'text' => 'required|string|min:5',
         ]);
 
-        $response = Http::post('http://127.0.0.1:8000/summarize', [
+        $response = Http::post('http://3.234.167.241:8000/summarize', [
             'text' => $request->input('text'),
         ]);
 
