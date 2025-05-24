@@ -7,7 +7,6 @@
     @vite('resources/css/app.css')
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
     <title>SumAI</title>
 </head>
 <body>
@@ -44,7 +43,7 @@
     </div>
 
     <!-- Berita Terkini -->
-    <div class="w-full font-inter flex flex-col items-center shadow-md px-4 py-10">
+    <div class="w-full font-inter flex flex-col items-center shadow-md px-4 pt-10 pb-20 ">
         <div class="font-bold text-[32px] sm:text-[40px] md:text-[48px] text-center mb-8">Berita Terkini</div>
         <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-screen-xl">
             @foreach ($latestNews as $item)
@@ -62,45 +61,6 @@
         <a class="font-medium text-[18px] md:text-[20px] mt-10 text-[#2563EB] hover:underline" href="/berita">Berita Lainnya</a>
     </div>
 
-    <!-- Fitur Unggulan -->
-    <div class="w-full font-inter flex flex-col items-center px-4 py-12 shadow-md">
-        <div class="font-bold text-[32px] sm:text-[40px] md:text-[48px] text-center mb-8">Fitur Unggulan</div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-screen-xl w-full">
-            <div class="flex flex-col items-center p-4">
-                <img src="{{ asset('build/assets/images/cepat.png') }}" alt="Cepat" class="h-[64px]">
-                <p class="font-bold text-[20px] mt-4 text-center">Cepat & Akurat</p>
-            </div>
-            <div class="flex flex-col items-center p-4">
-                <img src="{{ asset('build/assets/images/cepat.png') }}" alt="Cepat" class="h-[64px]">
-                <p class="font-bold text-[20px] mt-4 text-center">Cepat & Akurat</p>
-            </div>
-            <div class="flex flex-col items-center p-4">
-                <img src="{{ asset('build/assets/images/cepat.png') }}" alt="Cepat" class="h-[64px]">
-                <p class="font-bold text-[20px] mt-4 text-center">Cepat & Akurat</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Statistik -->
-    <div class="w-full py-12 flex items-center justify-center font-inter">
-        <div class="max-w-screen-xl w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-4 text-center">
-            <div>
-                <div class="text-[#2563EB] font-bold text-[32px] md:text-[40px]">1M+</div>
-                <div class="font-bold text-[18px] md:text-[20px]">User Active</div>
-            </div>
-            <div>
-                <div class="text-[#2563EB] font-bold text-[32px] md:text-[40px]">5M+</div>
-                <div class="font-bold text-[18px] md:text-[20px]">Text Summarized</div>
-            </div>
-            <div>
-                <div class="text-[#2563EB] font-bold text-[32px] md:text-[40px]">50+</div>
-                <div class="font-bold text-[18px] md:text-[20px]">Languages</div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Footer -->
     <x-footer></x-footer>
 
 </body>

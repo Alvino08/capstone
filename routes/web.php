@@ -79,3 +79,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::delete('/riwayat/{id}', [RiwayatController::class, 'destroy'])->name('riwayat.destroy')->middleware('auth');
+Route::delete('/berita/{id}', [NewsController::class, 'destroy'])->name('news.destroy')->middleware('auth');
+

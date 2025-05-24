@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\News;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+
 
 class NewsController extends Controller
 {
@@ -13,23 +15,6 @@ class NewsController extends Controller
         return view('post');
     }
 
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'title' => 'required|max:255',
-    //         'body'  => 'required',
-    //         'link'  => 'nullable|url',
-    //     ]);
-
-    //     News::create([
-    //         'title' => $request->title,
-    //         'slug'  => Str::slug($request->title),
-    //         'body'  => $request->body,
-    //         'link'  => $request->link,
-    //     ]);
-
-    //     return redirect()->route('berita')->with('success', 'Berita berhasil ditambahkan!');
-    // }
     public function store(Request $request)
 {
     $validated = $request->validate([
@@ -63,6 +48,15 @@ class NewsController extends Controller
     {
         $news = News::where('slug', $slug)->firstOrFail();
         return view('artikel', compact('news'));
+    }
+
+    public function destroy($id)
+    {
+        $news = News::findOrFail($id);
+        Storage::delete($news->img); // Jika ingin menghapus gambar juga
+        $news->delete();
+
+        return redirect('/berita')->with('success', 'Artikel berhasil dihapus.');
     }
 
 }
