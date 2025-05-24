@@ -22,7 +22,7 @@
         <!-- Kolom: Logo & Deskripsi -->
         <div class="w-full lg:w-[300px]">
             <div class="flex items-center h-[44px] mb-3">
-                <img src="{{ asset('build/assets/images/cepat.png') }}" alt="Cepat" class="w-[23px] h-[32px]">
+                <img src="{{ asset('images/icon.png') }}" alt="Cepat" class="w-[23px] h-[32px]">
                 <p class="ml-3 font-bold text-2xl">SumAI</p>
             </div>
             <p class="text-base font-normal">

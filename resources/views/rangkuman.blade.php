@@ -65,7 +65,6 @@
     @vite('resources/css/app.css')
     <title>SumAI Rangkuman</title>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
 </head>
 <body>
     
@@ -138,7 +137,7 @@
 
     <!-- Tombol Riwayat -->
     <a class="w-full h-auto py-10 flex flex-col items-center justify-center" href="/riwayat">
-        <img src="{{ asset('build/assets/images/riwayat.png') }}" alt="Riwayat" class="w-[110px] h-[110px] rounded-full p-2 outline outline-[#C8C8C8]">
+        <img src="{{ asset('images/riwayat.png') }}" alt="Riwayat" class="w-[110px] h-[110px] rounded-full p-2 outline outline-[#C8C8C8]">
         <p class="font-inter font-medium text-[20px] text-[#898989] mt-2">Riwayat</p>
     </a>
 
