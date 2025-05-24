@@ -1,30 +1,54 @@
-version: '3.8'
+# services:
+#   app:
+#     build: .
+#     container_name: sumai-app
+#     volumes:
+#       - .:/var/www/html
+#     ports:
+#       - "8000:80"
+#     depends_on:
+#       - queue
+#     command: >
+#       sh -c "php artisan migrate && php artisan serve --host=0.0.0.0 --port=80"
+#     environment:
+#       - DB_CONNECTION=sqlite
+#       - DB_DATABASE=/var/www/html/database/database.sqlite
 
+#   queue:
+#     build: .
+#     container_name: sumai-queue
+#     volumes:
+#       - .:/var/www/html
+#     command: >
+#       sh -c "
+#         composer install &&
+#         php artisan storage:link &&
+#         php artisan migrate &&
+#         php artisan queue:work
+#       "
 services:
   app:
-    build: .
+    image: alvino08/sumai-app:latest
     container_name: sumai-app
-    volumes:
-      - .:/var/www/html
     ports:
-      - "8000:80"
+      - "8000:8000"
+    volumes:
+      - .:/var/www/html   # Tambahkan ini
     depends_on:
       - queue
     command: >
-      sh -c "php artisan migrate && php artisan serve --host=0.0.0.0 --port=80"
+      sh -c "php artisan migrate &&
+             php artisan serve --host=0.0.0.0 --port=8000"
     environment:
       - DB_CONNECTION=sqlite
       - DB_DATABASE=/var/www/html/database/database.sqlite
 
   queue:
-    build: .
+    image: alvino08/sumai-app:latest
     container_name: sumai-queue
     volumes:
       - .:/var/www/html
     command: >
-      sh -c "
-        composer install &&
-        php artisan storage:link &&
-        php artisan migrate &&
-        php artisan queue:work
-      "
+      sh -c "php artisan storage:link &&
+             php artisan migrate &&
+             php artisan queue:work"
