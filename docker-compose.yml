@@ -23,10 +23,8 @@ services:
       - .:/var/www/html
     command: >
       sh -c "
+        composer install &&
         php artisan storage:link &&
         php artisan migrate &&
         php artisan queue:work
-        composer install &&
-        php artisan storage:link &&
-        php artisan serve --host=0.0.0.0 --port=8000
       "
