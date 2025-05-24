@@ -48,7 +48,8 @@
         <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-screen-xl">
             @foreach ($latestNews as $item)
             <div class="flex flex-col items-center w-full">
-                <img src="{{ asset($item->img ?? 'images/default-news.jpg') }}" alt="Gambar Berita" class="w-full max-w-[374px] h-[181px] rounded-[10px] object-cover" />
+                {{-- <img src="{{ asset($item->img ?? 'images/default-news.jpg') }}" alt="Gambar Berita" class="w-full max-w-[374px] h-[181px] rounded-[10px] object-cover" /> --}}
+                <img src="{{ asset('storage/' . $item->img) }}" alt="Gambar Berita" class="w-full max-w-[374px] h-[181px] rounded-[10px] object-cover" />
                 <div class="bg-white w-full max-w-[374px] h-[111px] rounded-[10px] border border-black p-[13px] -mt-10">
                     <p class="font-bold text-[18px] md:text-[20px] leading-6">{{ Str::limit($item->title, 70) }}</p>
                     <p class="text-[15px] mt-3 text-blue-600 hover:underline">
